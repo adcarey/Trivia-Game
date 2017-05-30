@@ -1,0 +1,16 @@
+#platform {
+	height: 700px;
+	width: 800px;
+	background-color: aqua;
+}
+#title{
+	font-size: 77px;
+	color: DarkGrey;
+	font-family: 'Diplomata', cursive;
+}
+.wrestler{
+	float: left;
+}
+.usa{
+	float: right;
+}
