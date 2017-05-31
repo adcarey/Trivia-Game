@@ -1,107 +1,121 @@
 //Variables
-var questions = {
-	q1 : {
-		q: "How many times did Cael Sanderson lose in college?",
-		a1: 2,
-		a2: 3,
-		a3: 6,
-		ca: 0,
-	},
+var questions = ["How many times did Cael Sanderson lose in college?", "At What age did Henry Cejudo win gold in the olympics?", "At which of the following weights did Kyle Dake not win an NCAA Championship?", "The movie foxcatcher was based off of the true story involving the murder of which of the following wrestlers?", "Andy Bisek best known for his stunning mustache has been a world medalist how many times?", "Which WWE wrestler was actually an olympic gold medalist before moving to the promotion?", "Which UFC star was not a Wrestling Olympian?"]
 
-	q2 : {
-		q:"At What age did Henry Cejudo win gold in the olympics?",
-		a1: 25,
-		a2: 22,
-		a3: 19,
-		ca: 21,
-	},
+var answers = [[2, 3, 6, 0], [25, 21, 22, 19],[133, 165, 149, 141], ["Mark Schultz", "Bruce Baumgartner", "Ed Banach", "Dave Schultz"], [1, 2, 3, 5], ["The Rock", "John Cena", "Brock Lesnar", "Kurt Angle"], ["Jon Jones", "Dan Henderson", "Daniel Cormier", "Henry Cejudo"]]
+		
+var correctAnswer = ["D. 0", "B. 21", "A. 133", "D. Dave Schultz", "B. 2", "D. Kurt Angle","A. Jon Jones"]
 
-	q3 : {
-		q:"At which of the following weights did Kyle Dake not win an NCAA Championship?",
-		a1:165,
-		a2:149,
-		a3:141,
-		ca:133,
-	},
+var image =["<img class='center-block img-right' src='assets/cael.jpg'>", "<img class='center-block img-right' src='assets/henry.jpg'>","<img class='center-block img-right' src='assets/dake.jpeg'>", "<img class='center-block img-right' src='assets/dave.jpeg'>", "<img class='center-block img-right' src='assets/andy.jpg'>", "<img class='center-block img-right' src='assets/kurt.jpg'>", "<img class='center-block img-right' src='assets/jon.jpg'>"]
 
-	q4 : {
-		q:"The movie foxcatcher was based off of the true story involving the murder of which of the following wrestlers?",
-		a1:"Mark Schultz",
-		a2:"Bruce Baumgartner",
-		a3:"Ed Banach",
-		ca:"Dave Schultz",
-	},
+var selectAnswer;
 
-	q5 : {
-		q:"Andy Bisek best known for his stunning mustache has been a world medalist how many times?",
-		a1:1,
-		a2:3,
-		a3:5,
-		ca:2,
-	},
+var timer = 30;
 
-	q6 : {
-		q: "Which WWE wrestler was actually an olympic gold medalist befor moving to the promotion?",
-		a1: "The Rock",
-		a2: "John Cena",
-		a3: "Brock Lesnar",
-		ca: "Kurt Angle",
-	},
+var runDown;
 
-	q7 : {
-		q: "Which UFC star was not a Wrestling Olympian?",
-		a1: "Dan Henderson",
-		a2: "Daniel Cormier",
-		a3: "Henry Cejudo",
-		ca: "Jon Jones",
+var timeOut;
 
-	},
-}
+var questionCount = 0;
 
-var answerSelected = false;
+var questionsAndAnswers;
 
-var correctAnswer = false;
+var wrong = 0;
 
-var wrongAnswer = false;
-
-var score = 0;
-
-var points = 0;
-
-var gameOver = false;
-
+var right = 0;
 //Functions 
 //Questions
-function computerQuestion(cpu) {
-	question.q = cpu.q;
+function startGame(){
+questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p><p class='text-center'>" + questions[questionCount] + "</p><p class='first-answer answer'>A. " + answers[questionCount][0] + "</p><p class='answer'>B. "+answers[questionCount][1]+"</p><p class='answer'>C. "+answers[questionCount][2]+"</p><p class='answer'>D. "+answers[questionCount][3]+"</p>";
+	$("#question").html(questionsAndAnswers);
 }
-//Selecting Answer
-function userSelection(selection) {
-	answers.a1 = selection.a1;
-	answers.a2 = selection.a2;
-	answers.a3 = selection.a3;
-	answers.ca = selection.ca;
+function rightResult() {
+	right++;
+	questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + timer + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswer[questionCount] + "</p>" + image[questionCount];
+	$("#question").html(questionsAndAnswers);
+	setTimeout(wait, 4000);  //  change to 4000 or other amount
 }
-
-function rightResult(){
-	$(".answers").removeClass("answers").addClass("correct");
-	$(".correct").html("You Are Correct! You have scored " + points + "Your total score is " + score);
-}
-
-function wrongResult(){
-	$("answers").removeClass("answers").addClass("wrong");
-	$(".wrong").html("That is incorrect! Your total score is " + score);
+function wrongResult() {
+	wrong++;
+	questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + timer + "</span></p>" + "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswer[questionCount] + "</p>" + image[questionCount];
+	$("#question").html(questionsAndAnswers);
+	setTimeout(wait, 4000); //  change to 4000 or other amount
 }
 
-function get
+function timesUp() {
+	wrong++;
+	questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + timer + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswer[questionCount] + "</p>" + image[questionCount];
+	$("#question").html(questionsAndAnswers);
+	setTimeout(wait, 4000);  //  change to 4000 or other amount
+}
 
+function countDown() {
+	runDown = setInterval(thirtySeconds, 1000);
+	function thirtySeconds() {
+		if (timer === 0) {
+			clearInterval(runDown);
+			timesUp();
+		}
+		if (timer > 0) {
+			timer--;
+		}
+		$(".timer").html(timer);
+	}
+}
+function wait() {
+	if (questionCount < 6) {
+	questionCount++;
+	startGame();
+	timer = 30;
+	countDown();
+	}
+	else {
+		gameOver();
+	}
+}
+
+function gameOver() {
+	questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + timer + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + right + "</p>" + "<p>Wrong Answers: " + wrong + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
+	$("#question").html(questionsAndAnswers);
+};
 
 
 function reset() {
-	answerSelected = false;
-	correctAnswer = false;
-	wrongAnswer = false;
-	score = 0;
-	points = 0;
-	gameOver = false;
+	wrong = 0;
+	right = 0;
+	questionCount = 0;
+	timer = 30;
+	startGame();
+	countDown();
 }
+
+//running the functions
+$(document).ready(function(){
+$(".start").on("click", function(){
+	startGame();
+	$(".start").hide();
+	countDown();
+});
+$("body").on("click", ".answer", function(event){
+	selectAnswer = $(this).text();
+	if(selectAnswer === correctAnswer[questionCount]) {
+		clearInterval(runDown);
+		rightResult();
+		console.log("click")
+		
+	} else {
+		clearInterval(runDown);
+		wrongResult();
+	}
+	
+});
+$("")
+
+$("body").on("click", ".reset-button", function(event){
+	reset();
+});
+});
+
+	
+
+
+

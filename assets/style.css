@@ -1,3 +1,8 @@
+body{
+	background-image: url("background.jpeg");
+	background-size: 100%: 
+}
+
 #platform {
 	height: 700px;
 	width: 800px;
@@ -13,4 +18,24 @@
 }
 .usa{
 	float: right;
+}
+#question{
+	font-size: 35px;
+	color: red;
+	font-family: 'Diplomata', cursive;
+}
+.timer{
+	font-size: 35px;
+	color: orange;
+	font-family: 'Diplomata', cursive;
+}
+.timer-p{
+	font-size: 35px;
+	color: orange;
+	font-family: 'Diplomata', cursive;
+}
+.answer{
+	font-size: 35px;
+	color: black;
+	font-family: 'Diplomata', cursive;
 }
