@@ -72,7 +72,10 @@ function wait() {
 		gameOver();
 	}
 }
-
+function play(){
+	var audio = document.getElementById("audio");
+	audio.play();
+}
 function gameOver() {
 	questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + timer + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + right + "</p>" + "<p>Wrong Answers: " + wrong + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
 	$("#question").html(questionsAndAnswers);
@@ -91,6 +94,7 @@ function reset() {
 //running the functions
 $(document).ready(function(){
 $(".start").on("click", function(){
+	play();
 	startGame();
 	$(".start").hide();
 	countDown();
@@ -101,17 +105,19 @@ $("body").on("click", ".answer", function(event){
 		clearInterval(runDown);
 		rightResult();
 		console.log("click")
+		play();
 		
 	} else {
 		clearInterval(runDown);
 		wrongResult();
+		play();
 	}
 	
 });
-$("")
 
 $("body").on("click", ".reset-button", function(event){
 	reset();
+	play();
 });
 });
 
