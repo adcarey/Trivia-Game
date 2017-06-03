@@ -3,10 +3,14 @@ body{
 	background-size: 100%: 
 	background-attachment: fixed;
 	background-size: cover;
+
+}
+.jumbotron{
+	background-color: rgba(0, 0, 0, 0);
 }
 button.answer{
 	width: 100%;
-	height: 65px;
+	height: 15%;
 	margin-top: 4px;
 }
 .answer:hover{
@@ -22,7 +26,6 @@ button.answer{
 	padding-top: 10px;
 }
 #title{
-	font-size: 35px;
 	color: DarkGrey;
 	font-family: 'Diplomata', cursive;
 }
@@ -33,22 +36,18 @@ button.answer{
 	float: right;
 }
 #question{
-	font-size: 35px;
 	color: red;
 	font-family: 'Diplomata', cursive;
 }
 .timer{
-	font-size: 35px;
 	color: orange;
 	font-family: 'Diplomata', cursive;
 }
 .timer-p{
-	font-size: 35px;
 	color: orange;
 	font-family: 'Diplomata', cursive;
 }
 .answer{
-	font-size: 30px;
 	color: black;
 	font-family: 'Diplomata', cursive;
 }
