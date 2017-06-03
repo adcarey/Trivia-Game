@@ -29,11 +29,9 @@ button.answer{
 	color: DarkGrey;
 	font-family: 'Diplomata', cursive;
 }
-.wrestler{
-	float: left;
-}
-.usa{
-	float: right;
+img{
+	height: 40%;
+	width: 40%;
 }
 #question{
 	color: red;
