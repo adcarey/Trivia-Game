@@ -30,8 +30,8 @@ button.answer{
 	font-family: 'Diplomata', cursive;
 }
 img{
-	height: 40%;
-	width: 40%;
+	height: 100%;
+	width: 100%;
 }
 #question{
 	color: red;
