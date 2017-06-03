@@ -25,7 +25,7 @@ var right = 0;
 //Functions 
 //Questions
 function startGame(){
-questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p><p class='text-center'>" + questions[questionCount] + "</p><p class='first-answer answer'>A. " + answers[questionCount][0] + "</p><p class='answer'>B. "+answers[questionCount][1]+"</p><p class='answer'>C. "+answers[questionCount][2]+"</p><p class='answer'>D. "+answers[questionCount][3]+"</p>";
+questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p><p class='text-center'>" + questions[questionCount] + "</p><button class='first-answer answer'>A. " + answers[questionCount][0] + "</button><button class='answer'>B. "+answers[questionCount][1]+"</button><button class='answer'>C. "+answers[questionCount][2]+"</button><button class='answer'>D. "+answers[questionCount][3]+"</button>";
 	$("#question").html(questionsAndAnswers);
 }
 function rightResult() {
