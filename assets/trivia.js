@@ -25,7 +25,7 @@ var right = 0;
 //Functions 
 //Questions
 function startGame(){
-questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p><p class='text-center'>" + questions[questionCount] + "</p><button class='first-answer answer'>A. " + answers[questionCount][0] + "</button><br><button class='answer'>B. "+answers[questionCount][1]+"</button><br><button class='answer'>C. "+answers[questionCount][2]+"</button><br><button class='answer'>D. "+answers[questionCount][3]+"</button>";
+questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p><p class='text-center question'>" + questions[questionCount] + "</p><button class='first-answer answer'>A. " + answers[questionCount][0] + "</button><br><button class='answer'>B. "+answers[questionCount][1]+"</button><br><button class='answer'>C. "+answers[questionCount][2]+"</button><br><button class='answer'>D. "+answers[questionCount][3]+"</button>";
 	$("#question").html(questionsAndAnswers);
 }
 function rightResult() {
@@ -77,7 +77,7 @@ function play(){
 	audio.play();
 }
 function gameOver() {
-	questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + timer + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + right + "</p>" + "<p>Wrong Answers: " + wrong + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></p>";
+	questionsAndAnswers = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + timer + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + right + "</p>" + "<p>Wrong Answers: " + wrong + "</p>" + "<button class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Quiz!</a></button>";
 	$("#question").html(questionsAndAnswers);
 };
 

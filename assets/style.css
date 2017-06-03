@@ -3,15 +3,28 @@ body{
 	background-attachment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
+	
 
 }
 .jumbotron{
 	background-color: rgba(0, 0, 0, 0);
+
+}
+
+.jumbotron p{
+	font-size: 100%;
 }
 button.answer{
 	width: 100%;
 	height: 15%;
 	margin-top: 4px;
+}
+.reset-button-container{
+	width: 100%;
+	height: 15%;
+}
+.reset-button{
+	font-size: 70%;
 }
 .answer:hover{
 	background-color: pink;
@@ -33,9 +46,13 @@ img{
 	height: 100%;
 	width: 100%;
 }
+.question{
+	font-size: 20%;
+}
 #question{
 	color: red;
 	font-family: 'Diplomata', cursive;
+	
 }
 .timer{
 	color: orange;
